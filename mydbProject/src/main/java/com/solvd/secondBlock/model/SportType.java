@@ -6,12 +6,12 @@ import java.util.List;
 public class SportType {
     private long id;
     private String name;
-    private boolean is_individual;
+    private boolean isIndividual;
 
-    public SportType(long id, String name, boolean is_individual) {
+    public SportType(long id, String name, boolean isIndividual) {
         this.id = id;
         this.name = name;
-        this.is_individual = is_individual;
+        this.isIndividual = isIndividual;
     }
 //GETTERS AND SETTERS
 
@@ -31,11 +31,11 @@ public class SportType {
         this.name = name;
     }
 
-    public boolean isIs_individual() {
-        return is_individual;
+    public boolean getisIndividual() {
+        return isIndividual;
     }
 
-    public void setIs_individual(boolean is_individual) {
-        this.is_individual = is_individual;
+    public void setisIndividual(boolean isIndividual) {
+        this.isIndividual = isIndividual;
     }
 }
