@@ -95,13 +95,11 @@ WHERE venue_name LIKE '%ARENA%';
 
 UPDATE mydb.games AS g
 JOIN mydb.olympics AS o ON g.olympics_id = o.olympics_id
-
 SET g.date_of_game = DATE_ADD(o.start_date, INTERVAL 3 DAY)
 WHERE o.olympics_id > 1;
 
 UPDATE mydb.teams t
 JOIN mydb.countries c ON t.country_id = c.id
-
 SET team_name = CONCAT (
 		'National '
 		,c.country_name
@@ -211,10 +209,33 @@ LEFT JOIN scoreboards sc ON sc.olympics_id = o.id
 LEFT JOIN medals m ON m.id = sc.medal_id
 LEFT JOIN countries c ON c.id = o.country_id;
 
+#DIFF JOINS
 SELECT games.id AS game_id
 	,teams.team_name
 FROM mydb.games
 RIGHT JOIN mydb.teams ON games.winner_team_id = teams.id;
+
+SELECT c.country_name, COUNT(sc.id) AS total_medals
+FROM countries c
+INNER JOIN teams t ON c.id = t.country_id
+INNER JOIN scoreboards sc ON t.id = sc.team_id
+GROUP BY c.country_name
+ORDER BY total_medals DESC;
+
+SELECT olympics.name AS olympic_event, medals.medal_name
+FROM mydb.olympics
+RIGHT JOIN mydb.scoreboards ON olympics.id = scoreboards.olympics_id
+RIGHT JOIN mydb.medals ON scoreboards.medal_id = medals.id;
+
+SELECT teams.team_name, participants.name AS member_name
+FROM mydb.teams
+LEFT OUTER JOIN mydb.team_has_members ON teams.id = team_has_members.team_id
+LEFT OUTER JOIN mydb.participants ON team_has_members.member_id = participants.id;
+
+SELECT games.id AS game_id, games.date_of_game, participants.name AS participant_name
+FROM mydb.games
+INNER JOIN mydb.individual_scores ON games.id = individual_scores.game_id
+INNER JOIN mydb.participants ON individual_scores.participant_id = participants.id;
 
 #AGG WITHOUT HAVING
 SELECT c.id
@@ -261,4 +282,45 @@ JOIN countries c ON c.id = p.country_id
 WHERE 2013 - year(birthdate) > 30
 GROUP BY c.country_name, country_id
 HAVING count(p.id) >1;
+
+SELECT c.country_name, COUNT(p.id) AS participant_count
+FROM countries c
+JOIN participants p ON c.id = p.country_id
+GROUP BY c.country_name
+HAVING participant_count > 5;
+
+SELECT t.team_name, AVG(t.squad_size) AS avg_squad_size
+FROM teams t
+GROUP BY t.team_name
+HAVING avg_squad_size > 2;
+
+SELECT t.country_id, COUNT(sc.id) AS total_medals
+FROM teams t
+LEFT JOIN scoreboards sc ON t.id = sc.team_id
+GROUP BY t.country_id
+HAVING total_medals > 0;
+
+SELECT s.name AS sport_name, MAX(ts.team_points) AS highest_team_score
+FROM sports s
+JOIN games g ON s.id = g.sport_id
+JOIN team_scores ts ON g.id = ts.game_id
+GROUP BY s.name
+HAVING highest_team_score > 1;
+
+SELECT ot.name AS olympics_type, COUNT(sc.id) AS total_medals
+FROM olympics_types ot
+LEFT JOIN olympics o ON ot.id = o.olympics_type_id
+LEFT JOIN scoreboards sc ON o.id = sc.olympics_id
+GROUP BY ot.name
+HAVING total_medals > 2;
+
+SELECT c.country_name, COUNT(sc.id) AS total_medals
+FROM countries c
+LEFT JOIN teams t ON c.id = t.country_id
+LEFT JOIN scoreboards sc ON t.id = sc.team_id
+GROUP BY c.country_name
+HAVING total_medals >= 1
+
+
+
 
