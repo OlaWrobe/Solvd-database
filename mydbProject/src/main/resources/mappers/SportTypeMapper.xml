@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="src/com/solvd/secondBlock/persistence/mybatisimpl/SportTypeRepositoryMyBatis">
-    <resultMap id="SportTypeResultMap" type="com.solvd.secondBlock.model.SportType" autoMapping="false">
+<mapper namespace="src.com.solvd.secondBlock.persistence.mybatisimpl.SportTypeRepositoryMyBatis">
+    <resultMap id="SportTypeResultMap" type="src.com.solvd.secondBlock.model.SportType" autoMapping="false">
         <id property="id" column="sportTypeId"/>
         <result property="name" column="sportTypeName"/>
         <result property="is_individual" column="isIndividual"/>

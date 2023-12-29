@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="src/com/solvd/secondBlock/persistence/mybatisimpl/SportRepositoryMyBatis">
+<mapper namespace="src.com.solvd.secondBlock.persistence.mybatisimpl.SportRepositoryMyBatis">
 
     <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO sports(name, description) VALUES (#{name},#{description})
@@ -24,11 +24,11 @@
         DELETE from sports where id={#id}
     </delete>
 
-    <resultMap id="SportResultMap" type="com.solvd.secondBlock.model.Sport" autoMapping="false">
+    <resultMap id="SportResultMap" type="src.com.solvd.secondBlock.model.Sport" autoMapping="false">
         <id column="sportId" property="id"/>
         <result column="name" property="name"/>
         <result column="description" property="description"/>
         <association property="sportType"
-                     resultMap="com.solvd.secondBlock.persistence.mybatisimpl.SportTypeRepositoryMyBatis.SportTypeResultMap"/>
+                     resultMap="src.com.solvd.secondBlock.persistence.mybatisimpl.SportTypeRepositoryMyBatis.SportTypeResultMap"/>
     </resultMap>
 </mapper>
