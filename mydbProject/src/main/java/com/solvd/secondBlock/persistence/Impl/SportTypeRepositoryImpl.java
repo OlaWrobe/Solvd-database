@@ -1,7 +1,7 @@
 package com.solvd.secondBlock.persistence.Impl;
 
 import com.solvd.secondBlock.model.SportType;
-import com.solvd.secondBlock.persistence.ConnectionPool;
+import com.solvd.secondBlock.persistence.connection.ConnectionPool;
 import com.solvd.secondBlock.persistence.SportTypeRepository;
 
 import java.sql.*;

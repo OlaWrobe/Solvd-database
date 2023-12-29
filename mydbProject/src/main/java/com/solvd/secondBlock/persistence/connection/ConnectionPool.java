@@ -1,4 +1,4 @@
-package com.solvd.secondBlock.persistence;
+package com.solvd.secondBlock.persistence.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
