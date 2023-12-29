@@ -21,10 +21,6 @@ public class VenueRepositoryImpl implements VenueRepository {
         }
     }
 
-    private static final String FIND_ALL_QUERY = "Select " +
-            "v.id as venue_id, v.name as venue_name, c.address as venue_address, c.capacity as venue_capacity " +
-            "From venues v ";
-
     @Override
     public void create(Venue venue) throws InterruptedException {
         Connection connection = CONNECTION_POOL.getConnection();
@@ -51,7 +47,7 @@ public class VenueRepositoryImpl implements VenueRepository {
     public List<Venue> findAll() throws InterruptedException {
         List<Venue> venues = new ArrayList<>();
         Connection connection = CONNECTION_POOL.getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_QUERY)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from venues")) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Venue venue = mapVenue(resultSet);
@@ -66,7 +62,7 @@ public class VenueRepositoryImpl implements VenueRepository {
     }
 
     @Override
-    public void updateById(int id, Venue updatedVenue) throws InterruptedException {
+    public void updateById(Long id, Venue updatedVenue) throws InterruptedException {
         Connection connection = CONNECTION_POOL.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(
                 "UPDATE venues SET name=?, address=?, capacity=? WHERE id=?")) {
@@ -84,7 +80,7 @@ public class VenueRepositoryImpl implements VenueRepository {
     }
 
     @Override
-    public void deleteById(int id) throws InterruptedException {
+    public void deleteById(Long id) throws InterruptedException {
         Connection connection = CONNECTION_POOL.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(
                 "DELETE FROM venues WHERE id=?")) {
@@ -98,7 +94,7 @@ public class VenueRepositoryImpl implements VenueRepository {
     }
 
     @Override
-    public Venue findById(int id) throws InterruptedException {
+    public Venue findById(Long id) throws InterruptedException {
         Connection connection = CONNECTION_POOL.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(
                 "SELECT * FROM venues WHERE id=?")) {
@@ -117,10 +113,10 @@ public class VenueRepositoryImpl implements VenueRepository {
     }
 
     private Venue mapVenue(ResultSet resultSet) throws SQLException {
-        long id = resultSet.getLong("venue_id");
-        String name = resultSet.getString("venue_name");
-        String address = resultSet.getString("venue_address");
-        int capacity = resultSet.getInt("venue_capacity");
+        long id = resultSet.getLong("id");
+        String name = resultSet.getString("name");
+        String address = resultSet.getString("address");
+        int capacity = resultSet.getInt("capacity");
 
         return new Venue(id, name, address, capacity);
     }

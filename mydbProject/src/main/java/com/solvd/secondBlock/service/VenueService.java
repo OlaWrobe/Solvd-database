@@ -1,11 +1,10 @@
-package com.solvd.secondBlock.persistence;
+package com.solvd.secondBlock.service;
 
 import com.solvd.secondBlock.model.Venue;
 
 import java.util.List;
 
-public interface VenueRepository {
-
+public interface VenueService {
     public void create(Venue venue) throws InterruptedException;
 
     public List<Venue> findAll() throws InterruptedException;

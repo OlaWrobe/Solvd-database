@@ -11,15 +11,20 @@ public class SportTypeServiceImpl implements SportTypeService {
         sportTypeRepositoryImpl.create(sportType);
     }
 
-    public void updateById(int id, SportType updatedType) throws InterruptedException {
+    public void updateById(Long id, SportType updatedType) throws InterruptedException {
         sportTypeRepositoryImpl.updateById(id, updatedType);
     }
 
-    public void deleteById(int id) throws InterruptedException {
+    public void deleteById(Long id) throws InterruptedException {
         sportTypeRepositoryImpl.deleteById(id);
     }
 
-    public SportType findById(int id) throws InterruptedException {
+    public SportType findById(Long id) throws InterruptedException {
         return sportTypeRepositoryImpl.findById(id);
+    }
+
+    @Override
+    public SportType findBySportId(Long sportID) throws InterruptedException {
+        return sportTypeRepositoryImpl.findBySportID(sportID);
     }
 }
