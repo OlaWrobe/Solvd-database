@@ -167,7 +167,6 @@ public class ParticipantRepositoryImpl implements ParticipantRepository {
 
     private Participant mapParticipant(ResultSet resultSet) throws SQLException {
         Long participantId = resultSet.getLong("id");
-        // Assuming you have methods like getCountryById, getSportById in your repository
         String name = resultSet.getString("name");
         String surname = resultSet.getString("surname");
         LocalDate birthdate = resultSet.getDate("birthdate").toLocalDate();

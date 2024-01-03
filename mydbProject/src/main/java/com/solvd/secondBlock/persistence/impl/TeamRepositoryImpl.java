@@ -99,7 +99,6 @@ public class TeamRepositoryImpl implements TeamRepository {
 
     private Team mapTeam(ResultSet resultSet) throws SQLException {
         Long teamId = resultSet.getLong("id");
-        // Assuming you have methods like getCountryById, getParticipantById in your repository
         String teamName = resultSet.getString("team_name");
         int squadSize = resultSet.getInt("squad_size");
         return new Team(teamId, null, null, teamName, squadSize, new ArrayList<>(), new ArrayList<>());

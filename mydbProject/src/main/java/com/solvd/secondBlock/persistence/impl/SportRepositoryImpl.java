@@ -117,7 +117,6 @@ public class SportRepositoryImpl implements SportRepository {
 
     private Sport mapSports(ResultSet resultSet) throws SQLException {
         Long id = resultSet.getLong("id");
-        Long sportTypeId = resultSet.getLong("sport_type_id");
         String name = resultSet.getString("name");
         String description = resultSet.getString("description");
         return new Sport(id, null, name, description);
