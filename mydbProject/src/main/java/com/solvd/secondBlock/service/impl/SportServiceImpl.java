@@ -3,7 +3,7 @@ package com.solvd.secondBlock.service.impl;
 
 import com.solvd.secondBlock.model.Sport;
 import com.solvd.secondBlock.model.SportType;
-import com.solvd.secondBlock.persistence.Impl.SportRepositoryImpl;
+import com.solvd.secondBlock.persistence.impl.SportRepositoryImpl;
 import com.solvd.secondBlock.persistence.SportRepository;
 import com.solvd.secondBlock.service.SportService;
 import com.solvd.secondBlock.service.SportTypeService;

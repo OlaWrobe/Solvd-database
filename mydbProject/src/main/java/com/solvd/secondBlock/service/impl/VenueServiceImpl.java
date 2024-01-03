@@ -1,7 +1,7 @@
 package com.solvd.secondBlock.service.impl;
 
 import com.solvd.secondBlock.model.Venue;
-import com.solvd.secondBlock.persistence.Impl.VenueRepositoryImpl;
+import com.solvd.secondBlock.persistence.impl.VenueRepositoryImpl;
 import com.solvd.secondBlock.persistence.VenueRepository;
 import com.solvd.secondBlock.service.VenueService;
 

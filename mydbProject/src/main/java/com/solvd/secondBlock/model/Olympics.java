@@ -20,4 +20,5 @@ public class Olympics {
     private LocalDate endDate;
     private List<Game> games = new ArrayList<>();
     private List<Scoreboard> scoreboards = new ArrayList<>();
+
 }

@@ -11,7 +11,6 @@ import java.sql.Time;
 @AllArgsConstructor
 public class TeamScore {
     private Long id;
-    private Game game;
     private int teamPoints;
     private Time teamTime;
 

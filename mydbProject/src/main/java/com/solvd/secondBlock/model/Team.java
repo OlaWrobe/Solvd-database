@@ -16,7 +16,7 @@ public class Team {
     private Participant captain;
     private String teamName;
     private int squadSize;
-    private List<Participant> players = new ArrayList<>();
-    private List<TeamScore> teamScoreList = new ArrayList<>();
+    private List<Participant> players;
+    private List<TeamScore> teamScoreList;
 
 }

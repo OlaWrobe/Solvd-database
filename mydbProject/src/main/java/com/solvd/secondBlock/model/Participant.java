@@ -19,5 +19,6 @@ public class Participant {
     private String surname;
     private LocalDate birthdate;
     private String gender;
-    private List<IndividualScore> individualScoreList = new ArrayList<>();
+    private String email;
+    private List<IndividualScore> individualScoreList;
 }

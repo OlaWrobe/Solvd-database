@@ -1,12 +1,12 @@
-package com.solvd.secondBlock.persistence.Impl;
+package com.solvd.secondBlock.persistence.impl;
 
-import com.solvd.secondBlock.model.Sport;
+import com.solvd.secondBlock.model.IndividualScore;
+import com.solvd.secondBlock.persistence.IndividualScoreRepository;
 import com.solvd.secondBlock.persistence.connection.ConnectionPool;
-import com.solvd.secondBlock.persistence.SportRepository;
 
 import java.sql.*;
 
-public class SportRepositoryImpl implements SportRepository {
+public class IndividualScoreRepositoryImpl implements IndividualScoreRepository {
     private static final ConnectionPool CONNECTION_POOL;
 
     static {
@@ -19,24 +19,24 @@ public class SportRepositoryImpl implements SportRepository {
         }
     }
 
-    private static final String CREATE_QUERY = "INSERT INTO sports(name,sport_type_id, description) VALUES (?,?, ?)";
-    private static final String UPDATE_QUERY = "UPDATE sports SET name=?,sport_type_id=?, description=? WHERE id=?";
-    private static final String DELETE_QUERY = "DELETE FROM sports WHERE id=?";
-    private static final String FIND_BY_ID_QUERY = "SELECT * FROM sports WHERE id=?";
+    private static final String CREATE_QUERY = "INSERT INTO individual_scores(time,points,distance) VALUES (?, ?,?)";
+    private static final String UPDATE_QUERY = "UPDATE individual_scores SET time=?, points=?, distance=? WHERE id=?";
+    private static final String DELETE_QUERY = "DELETE FROM individual_scores WHERE id=?";
+    private static final String FIND_BY_ID_QUERY = "SELECT * FROM individual_scores WHERE id=?";
 
     @Override
-    public void create(Sport sport) throws InterruptedException {
+    public void create(IndividualScore individualScore) throws InterruptedException {
         Connection connection = CONNECTION_POOL.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, sport.getName());
-            preparedStatement.setLong(2, sport.getSportType().getId());
-            preparedStatement.setString(3, sport.getDescription());
+            preparedStatement.setTime(1, individualScore.getTime());
+            preparedStatement.setLong(2, individualScore.getPoints());
+            preparedStatement.setDouble(3, individualScore.getDistance());
 
             preparedStatement.executeUpdate();
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             while (resultSet.next()) {
-                sport.setId(resultSet.getLong(1));
+                individualScore.setId(resultSet.getLong(1));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -46,12 +46,12 @@ public class SportRepositoryImpl implements SportRepository {
     }
 
     @Override
-    public void updateById(Long id, Sport updatedSport) throws InterruptedException, SQLException {
+    public void updateById(Long id, IndividualScore updatedIndividualScore) throws InterruptedException, SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_QUERY)) {
-            preparedStatement.setString(1, updatedSport.getName());
-            preparedStatement.setLong(2, updatedSport.getSportType().getId());
-            preparedStatement.setString(3, updatedSport.getDescription());
+            preparedStatement.setTime(1, updatedIndividualScore.getTime());
+            preparedStatement.setLong(2, updatedIndividualScore.getPoints());
+            preparedStatement.setDouble(3, updatedIndividualScore.getDistance());
             preparedStatement.setLong(4, id);
 
             preparedStatement.executeUpdate();
@@ -65,7 +65,6 @@ public class SportRepositoryImpl implements SportRepository {
     @Override
     public void deleteById(Long id) throws InterruptedException {
         Connection connection = CONNECTION_POOL.getConnection();
-
         try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_QUERY)) {
             preparedStatement.setLong(1, id);
 
@@ -77,14 +76,15 @@ public class SportRepositoryImpl implements SportRepository {
         }
     }
 
-    public Sport findById(Long id) throws InterruptedException {
+    @Override
+    public IndividualScore findById(Long id) throws InterruptedException {
         Connection connection = CONNECTION_POOL.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID_QUERY)) {
             preparedStatement.setLong(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                return mapSports(resultSet);
+                return mapIndividualScore(resultSet);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -94,11 +94,11 @@ public class SportRepositoryImpl implements SportRepository {
         return null;
     }
 
-    private Sport mapSports(ResultSet resultSet) throws SQLException {
-        Long id = resultSet.getLong("id");
-        Long sportTypeId = resultSet.getLong("sport_type_id");
-        String name = resultSet.getString("name");
-        String description = resultSet.getString("description");
-        return new Sport(id, null, name, description);
+    private IndividualScore mapIndividualScore(ResultSet resultSet) throws SQLException {
+        Long individualScoreId = resultSet.getLong("id");
+        Time time = resultSet.getTime("time");
+        Integer points = resultSet.getInt("points");
+        float distance = resultSet.getFloat("distance");
+        return new IndividualScore(individualScoreId, time, points, distance);
     }
 }

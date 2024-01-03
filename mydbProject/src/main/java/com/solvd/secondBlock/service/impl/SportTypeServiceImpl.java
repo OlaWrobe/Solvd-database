@@ -1,7 +1,7 @@
 package com.solvd.secondBlock.service.impl;
 
 import com.solvd.secondBlock.model.SportType;
-import com.solvd.secondBlock.persistence.Impl.SportTypeRepositoryImpl;
+import com.solvd.secondBlock.persistence.impl.SportTypeRepositoryImpl;
 import com.solvd.secondBlock.service.SportTypeService;
 
 public class SportTypeServiceImpl implements SportTypeService {

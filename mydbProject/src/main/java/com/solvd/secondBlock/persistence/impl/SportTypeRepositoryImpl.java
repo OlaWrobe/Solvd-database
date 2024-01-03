@@ -1,4 +1,4 @@
-package com.solvd.secondBlock.persistence.Impl;
+package com.solvd.secondBlock.persistence.impl;
 
 import com.solvd.secondBlock.model.SportType;
 import com.solvd.secondBlock.persistence.connection.ConnectionPool;
