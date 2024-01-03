@@ -1,14 +1,12 @@
 package com.solvd.secondBlock.persistence.impl;
 
-import com.solvd.secondBlock.model.TeamScore;
-import com.solvd.secondBlock.persistence.TeamScoreRepository;
+import com.solvd.secondBlock.model.Country;
+import com.solvd.secondBlock.persistence.CountryRepository;
 import com.solvd.secondBlock.persistence.connection.ConnectionPool;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
-public class TeamScoreRepositoryImpl implements TeamScoreRepository {
+public class CountryRepositoryImpl implements CountryRepository {
     private static final ConnectionPool CONNECTION_POOL;
 
     static {
@@ -21,26 +19,28 @@ public class TeamScoreRepositoryImpl implements TeamScoreRepository {
         }
     }
 
-    private static final String CREATE_QUERY = "INSERT INTO team_scores(team_points, team_time) VALUES (?, ?)";
-    private static final String UPDATE_QUERY = "UPDATE team_scores SET team_points=?, team_time=? WHERE id=?";
-    private static final String DELETE_QUERY = "DELETE FROM team_scores WHERE id=?";
-    private static final String FIND_BY_ID_QUERY = "SELECT * FROM team_scores WHERE id=?";
-    private static final String FIND_BY_TEAM_ID_QUERY = "SELECT ts.id, ts.game_id, ts.team_id, ts.team_points, ts.team_time " +
-            "FROM team_scores ts left join teams t ON t.id = ts.team_id " +
+    private static final String CREATE_QUERY = "INSERT INTO countries(country_name) VALUES (?)";
+    private static final String UPDATE_QUERY = "UPDATE countries SET country_name=? WHERE id=?";
+    private static final String DELETE_QUERY = "DELETE FROM countries WHERE id=?";
+    private static final String FIND_BY_ID_QUERY = "SELECT * FROM countries WHERE id=?";
+    private static final String FIND_BY_PARTICIPANT_ID_QUERY = "SELECT c.id, country_name " +
+            "FROM countries c left join participants p ON c.id = p.country_id " +
+            "where p.id=?";
+    private static final String FIND_BY_TEAM_ID_QUERY = "SELECT c.id, country_name " +
+            "FROM countries c left join teams t ON c.id = t.country_id " +
             "where t.id=?";
 
     @Override
-    public void create(TeamScore teamScore) throws InterruptedException {
+    public void create(Country country) throws InterruptedException {
         Connection connection = CONNECTION_POOL.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(CREATE_QUERY, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setLong(1, teamScore.getTeamPoints());
-            preparedStatement.setTime(2, teamScore.getTeamTime());
+            preparedStatement.setString(1, country.getCountryName());
 
             preparedStatement.executeUpdate();
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             while (resultSet.next()) {
-                teamScore.setId(resultSet.getLong(1));
+                country.setId(resultSet.getLong(1));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -50,12 +50,11 @@ public class TeamScoreRepositoryImpl implements TeamScoreRepository {
     }
 
     @Override
-    public void updateById(Long id, TeamScore updatedTeamScore) throws InterruptedException, SQLException {
+    public void updateById(Long id, Country updatedCountry) throws InterruptedException, SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_QUERY)) {
-            preparedStatement.setLong(1, updatedTeamScore.getTeamPoints());
-            preparedStatement.setTime(2, updatedTeamScore.getTeamTime());
-            preparedStatement.setLong(3, id);
+            preparedStatement.setString(1, updatedCountry.getCountryName());
+            preparedStatement.setLong(2, id);
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -80,14 +79,14 @@ public class TeamScoreRepositoryImpl implements TeamScoreRepository {
     }
 
     @Override
-    public TeamScore findById(Long id) throws InterruptedException {
+    public Country findById(Long id) throws InterruptedException {
         Connection connection = CONNECTION_POOL.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID_QUERY)) {
             preparedStatement.setLong(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                return mapTeamScore(resultSet);
+                return mapCountry(resultSet);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -97,15 +96,35 @@ public class TeamScoreRepositoryImpl implements TeamScoreRepository {
         return null;
     }
 
-    public List<TeamScore> findScoresById(Long id) throws InterruptedException {
+    @Override
+    public Country findByParticipantId(Long id) throws InterruptedException {
         Connection connection = CONNECTION_POOL.getConnection();
-        List<TeamScore> teamScores = new ArrayList<>();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_PARTICIPANT_ID_QUERY)) {
+            preparedStatement.setLong(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return mapCountry(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            CONNECTION_POOL.releaseConnection(connection);
+        }
+        return null;
+    }
+
+    @Override
+    public Country findByTeamId(Long id) throws InterruptedException {
+        Connection connection = CONNECTION_POOL.getConnection();
+
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_TEAM_ID_QUERY)) {
             preparedStatement.setLong(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                teamScores.add(mapTeamScore(resultSet));
+            if (resultSet.next()) {
+                return mapCountry(resultSet);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -115,11 +134,10 @@ public class TeamScoreRepositoryImpl implements TeamScoreRepository {
         return null;
     }
 
-    private TeamScore mapTeamScore(ResultSet resultSet) throws SQLException {
-        Long teamScoreId = resultSet.getLong("id");
-        int teamPoints = resultSet.getInt("team_points");
-        Time teamTime = resultSet.getTime("team_time");
-        return new TeamScore(teamScoreId, teamPoints, teamTime);
+    private Country mapCountry(ResultSet resultSet) throws SQLException {
+        Long countryId = resultSet.getLong("id");
+        String countryName = resultSet.getString("country_name");
+        return new Country(countryId, countryName);
     }
 
 }

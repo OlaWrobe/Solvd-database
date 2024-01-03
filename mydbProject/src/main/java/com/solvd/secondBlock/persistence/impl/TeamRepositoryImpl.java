@@ -1,9 +1,7 @@
 package com.solvd.secondBlock.persistence.impl;
 
 import com.solvd.secondBlock.model.Team;
-import com.solvd.secondBlock.model.TeamScore;
 import com.solvd.secondBlock.persistence.TeamRepository;
-import com.solvd.secondBlock.persistence.TeamScoreRepository;
 import com.solvd.secondBlock.persistence.connection.ConnectionPool;
 
 import java.sql.*;

@@ -7,6 +7,7 @@ import com.solvd.secondBlock.persistence.connection.ConnectionPool;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ParticipantRepositoryImpl implements ParticipantRepository {
     private static final ConnectionPool CONNECTION_POOL;
@@ -25,6 +26,12 @@ public class ParticipantRepositoryImpl implements ParticipantRepository {
     private static final String UPDATE_QUERY = "UPDATE participants SET country_id=?, sport_id=?, name=?, surname=?, birthdate=?, gender=?, email=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE FROM participants WHERE id=?";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM participants WHERE id=?";
+    private static final String FIND_CAPTAIN = "SELECT p.id,p.country_id,p.sport_id,p.name,p.surname,p.birthdate,p.gender,p.email " +
+            " FROM participants p left join teams t ON p.id = t.captain_id " +
+            "WHERE t.id=?";
+    private static final String FIND_MEMBERS = "SELECT p.id,p.country_id,p.sport_id,p.name,p.surname,p.birthdate,p.gender,p.email " +
+            "FROM participants p left join team_has_members thm ON p.id = thm.member_id " +
+            "WHERE thm.team_id=?";
 
     @Override
     public void create(Participant participant) throws InterruptedException {
@@ -102,6 +109,60 @@ public class ParticipantRepositoryImpl implements ParticipantRepository {
             CONNECTION_POOL.releaseConnection(connection);
         }
         return null;
+    }
+
+    public Participant findCaptainByTeamId(Long id) throws InterruptedException {
+        Connection connection = CONNECTION_POOL.getConnection();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_CAPTAIN)) {
+            preparedStatement.setLong(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return mapParticipant(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            CONNECTION_POOL.releaseConnection(connection);
+        }
+        return null;
+    }
+
+    public List<Participant> findPlayersByTeamId(Long id) throws InterruptedException {
+        Connection connection = CONNECTION_POOL.getConnection();
+        List<Participant> participants = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_MEMBERS)) {
+            preparedStatement.setLong(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                participants.add(mapParticipant(resultSet));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            CONNECTION_POOL.releaseConnection(connection);
+        }
+        return null;
+    }
+
+    public List<Participant> findAll() throws InterruptedException {
+        Connection connection = CONNECTION_POOL.getConnection();
+        List<Participant> participants = new ArrayList<>();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM participants")) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                participants.add(mapParticipant(resultSet));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            CONNECTION_POOL.releaseConnection(connection);
+        }
+
+        return participants;
     }
 
     private Participant mapParticipant(ResultSet resultSet) throws SQLException {

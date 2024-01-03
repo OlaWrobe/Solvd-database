@@ -1,0 +1,5 @@
+03:51:55.814 [main] INFO  com.solvd.Main - random sport info 1 Football 1
+03:51:55.826 [main] INFO  com.solvd.Main - New sport 4 test 1
+03:51:55.859 [main] INFO  com.solvd.Main - Person with id 1 Michael Jordan
+03:51:55.896 [main] INFO  com.solvd.Main - Person with id 1 after changes KK AA
+03:51:55.899 [main] INFO  com.solvd.Main - data with index 4 deleted

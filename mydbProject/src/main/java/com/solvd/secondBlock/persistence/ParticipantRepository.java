@@ -1,16 +1,13 @@
 package com.solvd.secondBlock.persistence;
 
 import com.solvd.secondBlock.model.Participant;
-import com.solvd.secondBlock.model.Sport;
 
-import java.sql.SQLException;
+import java.util.List;
 
-public interface ParticipantRepository {
-    public void create(Participant participant) throws InterruptedException;
+public interface ParticipantRepository extends UniversalDao<Participant> {
+    public Participant findCaptainByTeamId(Long id) throws InterruptedException;
 
-    public void updateById(Long id, Participant updatedParticipant) throws InterruptedException, SQLException;
+    public List<Participant> findPlayersByTeamId(Long id) throws InterruptedException;
 
-    public void deleteById(Long id) throws InterruptedException;
-
-    public Participant findById(Long id) throws InterruptedException;
+    public List<Participant> findAll() throws InterruptedException;
 }

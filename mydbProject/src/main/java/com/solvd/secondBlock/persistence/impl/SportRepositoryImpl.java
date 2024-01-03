@@ -1,8 +1,8 @@
 package com.solvd.secondBlock.persistence.impl;
 
 import com.solvd.secondBlock.model.Sport;
-import com.solvd.secondBlock.persistence.connection.ConnectionPool;
 import com.solvd.secondBlock.persistence.SportRepository;
+import com.solvd.secondBlock.persistence.connection.ConnectionPool;
 
 import java.sql.*;
 
@@ -23,6 +23,9 @@ public class SportRepositoryImpl implements SportRepository {
     private static final String UPDATE_QUERY = "UPDATE sports SET name=?,sport_type_id=?, description=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE FROM sports WHERE id=?";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM sports WHERE id=?";
+    private static final String FIND_BY_PARTICIPANT_ID_QUERY = "SELECT s.id, s.sport_type_id, s.name, s.description " +
+            "FROM sports s left join participants p ON s.id = p.sport_id " +
+            "where p.id=?";
 
     @Override
     public void create(Sport sport) throws InterruptedException {
@@ -80,6 +83,24 @@ public class SportRepositoryImpl implements SportRepository {
     public Sport findById(Long id) throws InterruptedException {
         Connection connection = CONNECTION_POOL.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID_QUERY)) {
+            preparedStatement.setLong(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return mapSports(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            CONNECTION_POOL.releaseConnection(connection);
+        }
+        return null;
+    }
+
+    public Sport findByParticipantId(Long id) throws InterruptedException {
+        Connection connection = CONNECTION_POOL.getConnection();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_PARTICIPANT_ID_QUERY)) {
             preparedStatement.setLong(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();

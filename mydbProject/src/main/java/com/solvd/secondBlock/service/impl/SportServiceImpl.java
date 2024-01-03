@@ -22,6 +22,9 @@ public class SportServiceImpl implements SportService {
     public Sport create(Sport sport) throws InterruptedException {
         sport.setId(null);
         sportRepository.create(sport);
+        if (sport.getSportType().getId() == null) {
+            sportTypeService.create(sport.getSportType());
+        }
         return sport;
     }
 
@@ -40,6 +43,10 @@ public class SportServiceImpl implements SportService {
     @Override
     public void updateById(Long id, Sport sport) throws InterruptedException, SQLException {
         sportRepository.updateById(id, sport);
+    }
+
+    public Sport findByParticipantId(Long id) throws InterruptedException {
+        return sportRepository.findByParticipantId(id);
     }
 
 }

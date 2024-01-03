@@ -5,6 +5,8 @@ import com.solvd.secondBlock.persistence.IndividualScoreRepository;
 import com.solvd.secondBlock.persistence.connection.ConnectionPool;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class IndividualScoreRepositoryImpl implements IndividualScoreRepository {
     private static final ConnectionPool CONNECTION_POOL;
@@ -23,6 +25,9 @@ public class IndividualScoreRepositoryImpl implements IndividualScoreRepository 
     private static final String UPDATE_QUERY = "UPDATE individual_scores SET time=?, points=?, distance=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE FROM individual_scores WHERE id=?";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM individual_scores WHERE id=?";
+    private static final String FIND_BY_PARTICIPANT_ID_QUERY = "SELECT ins.id, ins.participant_id, ins.game_id, ins.time, ins.points, ins.distance " +
+            "FROM individual_scores ins left join participants p ON ins.participant_id = p.id " +
+            "where p.id=?";
 
     @Override
     public void create(IndividualScore individualScore) throws InterruptedException {
@@ -85,6 +90,24 @@ public class IndividualScoreRepositoryImpl implements IndividualScoreRepository 
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 return mapIndividualScore(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            CONNECTION_POOL.releaseConnection(connection);
+        }
+        return null;
+    }
+
+    public List<IndividualScore> findIndividualScoresById(Long id) throws InterruptedException {
+        Connection connection = CONNECTION_POOL.getConnection();
+        List<IndividualScore> individualScoreList = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_PARTICIPANT_ID_QUERY)) {
+            preparedStatement.setLong(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                individualScoreList.add(mapIndividualScore(resultSet));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

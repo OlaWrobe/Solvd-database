@@ -5,6 +5,7 @@ import com.solvd.secondBlock.persistence.impl.VenueRepositoryImpl;
 import com.solvd.secondBlock.persistence.VenueRepository;
 import com.solvd.secondBlock.service.VenueService;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class VenueServiceImpl implements VenueService {
@@ -26,7 +27,7 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
-    public void updateById(Long id, Venue updatedVenue) throws InterruptedException {
+    public void updateById(Long id, Venue updatedVenue) throws InterruptedException, SQLException {
         venueRepository.updateById(id, updatedVenue);
     }
 

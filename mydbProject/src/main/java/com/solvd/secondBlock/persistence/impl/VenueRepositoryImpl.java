@@ -1,8 +1,8 @@
 package com.solvd.secondBlock.persistence.impl;
 
 import com.solvd.secondBlock.model.Venue;
-import com.solvd.secondBlock.persistence.connection.ConnectionPool;
 import com.solvd.secondBlock.persistence.VenueRepository;
+import com.solvd.secondBlock.persistence.connection.ConnectionPool;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -12,4 +12,6 @@ public interface SportService {
     public void deleteById(Long id) throws InterruptedException;
 
     public void updateById(Long id, Sport sport) throws InterruptedException, SQLException;
+
+    public Sport findByParticipantId(Long id) throws InterruptedException;
 }
