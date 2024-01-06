@@ -1,34 +1,41 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="src.com.solvd.secondBlock.persistence.mybatisimpl.SportRepositoryMyBatis">
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
-        INSERT INTO sports(name, description) VALUES (#{name},#{description})
+<mapper namespace="com.solvd.secondBlock.persistence.SportRepository">
+
+    <resultMap id="sportResultMap" type="com.solvd.secondBlock.model.Sport">
+        <id property="id" column="id"/>
+        <result property="sportTypeId" column="sport_type_id"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+    </resultMap>
+
+    <!-- Create operation -->
+    <insert id="create" parameterType="com.solvd.secondBlock.model.Sport">
+        INSERT INTO sports (sport_type_id, name, description)
+        VALUES (#{sportTypeId}, #{name}, #{description})
     </insert>
-    <sql id="sportSelect">
-        Select s.id as sportId, s.name, s.description, st.id as sportTypeId,
-        st.name as sportTypeName, st.is_individual as isIndividual
-        from sports s join sport_types st on
-        s.sport_type_id=st.id
-    </sql>
 
-    <select id="findById" resultMap="SportResultMap">
-        <include refid="sportSelect"/>
-        where id= #{id}
-    </select>
-
-    <update id="updateById">
-        UPDATE sports SET name=#{sport.name}, description=#{sport.description} WHERE id=#{sportId}
+    <!-- Update operation -->
+    <update id="updateById" parameterType="java.util.Map">
+        UPDATE sports
+        SET sport_type_id = #{updatedEntity.sportTypeId},
+        name = #{updatedEntity.name},
+        description = #{updatedEntity.description}
+        WHERE id = #{id}
     </update>
-    <delete id="deleteById">
-        DELETE from sports where id={#id}
+
+    <!-- Delete operation -->
+    <delete id="deleteById" parameterType="Long">
+        DELETE FROM sports
+        WHERE id = #{id}
     </delete>
 
-    <resultMap id="SportResultMap" type="src.com.solvd.secondBlock.model.Sport" autoMapping="false">
-        <id column="sportId" property="id"/>
-        <result column="name" property="name"/>
-        <result column="description" property="description"/>
-        <association property="sportType"
-                     resultMap="src.com.solvd.secondBlock.persistence.mybatisimpl.SportTypeRepositoryMyBatis.SportTypeResultMap"/>
-    </resultMap>
+    <!-- Retrieve operation -->
+    <select id="findById" resultMap="sportResultMap" parameterType="Long">
+        SELECT * FROM sports
+        WHERE id = #{id}
+    </select>
+
 </mapper>

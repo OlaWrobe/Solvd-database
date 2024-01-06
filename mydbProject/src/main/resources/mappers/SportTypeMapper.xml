@@ -1,10 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="src.com.solvd.secondBlock.persistence.mybatisimpl.SportTypeRepositoryMyBatis">
-    <resultMap id="SportTypeResultMap" type="src.com.solvd.secondBlock.model.SportType" autoMapping="false">
-        <id property="id" column="sportTypeId"/>
-        <result property="name" column="sportTypeName"/>
-        <result property="is_individual" column="isIndividual"/>
-    </resultMap>
-</mapper>
+<!-- SportTypeMapper.xml -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.secondBlock.persistence.SportTypeRepository">
 
+    <resultMap id="sportTypeResultMap" type="com.solvd.secondBlock.model.SportType">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="isIndividual" column="is_individual"/>
+    </resultMap>
+
+    <select id="findById" parameterType="java.lang.Long" resultMap="sportTypeResultMap">
+        SELECT * FROM sport_types WHERE id = #{id}
+    </select>
+
+    <insert id="create" parameterType="com.solvd.secondBlock.model.SportType">
+        INSERT INTO sport_types (name, is_individual) VALUES (#{name}, #{isIndividual})
+    </insert>
+
+    <update id="updateById" parameterType="java.util.Map">
+        UPDATE sport_types SET name = #{updatedEntity.name}, is_individual = #{updatedEntity.isIndividual}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM sport_types WHERE id = #{id}
+    </delete>
+
+</mapper>

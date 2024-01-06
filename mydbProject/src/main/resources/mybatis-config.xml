@@ -2,20 +2,26 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <configuration>
-    <properties resource="config-properties"/>
+    <properties resource="config.properties"/>
     <environments default="development">
         <environment id="development">
+
             <transactionManager type="JDBC"/>
-            <dataSource type="">
+
+            <dataSource type="POOLED">
+                <!-- Use placeholders -->
                 <property name="driver" value="${driver}"/>
-                <property name="url" value="${url}"/> <!--REMEMBER TO CHANGE NAME!!-->
-                <property name="username" value="${username}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${user}"/>
                 <property name="password" value="${password}"/>
             </dataSource>
+
         </environment>
     </environments>
+
     <mappers>
-        <mapper resource=""/>
+        <mapper resource="mappers/SportTypeMapper.xml"/>
     </mappers>
 </configuration>
