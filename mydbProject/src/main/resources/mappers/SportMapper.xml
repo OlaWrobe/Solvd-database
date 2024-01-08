@@ -6,36 +6,37 @@
 
     <resultMap id="sportResultMap" type="com.solvd.secondBlock.model.Sport">
         <id property="id" column="id"/>
-        <result property="sportTypeId" column="sport_type_id"/>
         <result property="name" column="name"/>
         <result property="description" column="description"/>
     </resultMap>
 
-    <!-- Create operation -->
     <insert id="create" parameterType="com.solvd.secondBlock.model.Sport">
         INSERT INTO sports (sport_type_id, name, description)
-        VALUES (#{sportTypeId}, #{name}, #{description})
+        VALUES (#{sportType.id}, #{name}, #{description})
     </insert>
 
-    <!-- Update operation -->
-    <update id="updateById" parameterType="java.util.Map">
+    <update id="updateById">
         UPDATE sports
-        SET sport_type_id = #{updatedEntity.sportTypeId},
-        name = #{updatedEntity.name},
-        description = #{updatedEntity.description}
+        SET sport_type_id = #{updated.sportType.id},
+        name = #{updated.name},
+        description = #{updated.description}
         WHERE id = #{id}
     </update>
 
-    <!-- Delete operation -->
     <delete id="deleteById" parameterType="Long">
         DELETE FROM sports
         WHERE id = #{id}
     </delete>
 
-    <!-- Retrieve operation -->
     <select id="findById" resultMap="sportResultMap" parameterType="Long">
-        SELECT * FROM sports
-        WHERE id = #{id}
+        SELECT s.id, s.name, s.description
+        FROM sports s
+        WHERE s.id = #{id}
     </select>
 
+    <select id="findByParticipantId" parameterType="Long" resultMap="sportResultMap">
+        SELECT s.id, s.name, s.description
+        FROM sports s LEFT JOIN participants p ON s.id = p.sport_id
+        WHERE p.id = #{participantId}
+    </select>
 </mapper>

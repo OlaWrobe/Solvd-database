@@ -17,13 +17,21 @@
         INSERT INTO sport_types (name, is_individual) VALUES (#{name}, #{isIndividual})
     </insert>
 
-    <update id="updateById" parameterType="java.util.Map">
-        UPDATE sport_types SET name = #{updatedEntity.name}, is_individual = #{updatedEntity.isIndividual}
+    <update id="updateById">
+        UPDATE sport_types SET
+        name = #{updated.name},
+        is_individual = #{updated.isIndividual}
         WHERE id = #{id}
     </update>
 
     <delete id="deleteById" parameterType="java.lang.Long">
         DELETE FROM sport_types WHERE id = #{id}
     </delete>
+
+    <select id="findBySportID" parameterType="Long" resultMap="sportTypeResultMap">
+        SELECT sport_type_id as id, st.name as name, is_individual
+        FROM sport_types st join sports s ON s.sport_type_id = st.id
+        WHERE s.id = #{sportId}
+    </select>
 
 </mapper>

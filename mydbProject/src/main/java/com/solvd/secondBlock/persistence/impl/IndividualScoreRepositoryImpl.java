@@ -114,7 +114,7 @@ public class IndividualScoreRepositoryImpl implements IndividualScoreRepository 
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return null;
+        return individualScoreList;
     }
 
     private IndividualScore mapIndividualScore(ResultSet resultSet) throws SQLException {

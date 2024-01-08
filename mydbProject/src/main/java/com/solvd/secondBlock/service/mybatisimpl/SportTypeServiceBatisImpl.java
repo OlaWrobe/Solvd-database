@@ -29,9 +29,7 @@ public class SportTypeServiceBatisImpl implements SportTypeService {
     }
 
     @Override
-    public SportType findBySportId(Long sportID) throws InterruptedException {
-        // Implement this method using your MyBatis repository
-        // Example: return sportTypeRepositoryBatis.findBySportId(sportID);
-        throw new UnsupportedOperationException("Method not implemented yet");
+    public SportType findBySportId(Long sportId) {
+        return sportTypeRepositoryBatis.findBySportID(sportId);
     }
 }

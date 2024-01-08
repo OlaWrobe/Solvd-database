@@ -1,5 +1,6 @@
-03:51:55.814 [main] INFO  com.solvd.Main - random sport info 1 Football 1
-03:51:55.826 [main] INFO  com.solvd.Main - New sport 4 test 1
-03:51:55.859 [main] INFO  com.solvd.Main - Person with id 1 Michael Jordan
-03:51:55.896 [main] INFO  com.solvd.Main - Person with id 1 after changes KK AA
-03:51:55.899 [main] INFO  com.solvd.Main - data with index 4 deleted
+02:18:03.455 [main] INFO  com.solvd.Main - Created Sport: Soccer
+02:18:03.689 [main] INFO  com.solvd.Main - Retrieved Sport by ID: Association football
+02:18:03.770 [main] INFO  com.solvd.Main - Updated Sport to name footballxd: Footballxd
+02:18:03.922 [main] INFO  com.solvd.Main - Sport found by Participant ID 1: Football
+02:18:04.102 [main] INFO  com.solvd.Main - Deleted Sport with ID: 2
+02:18:04.154 [main] INFO  com.solvd.Main - winner is player LeBron James

@@ -2,21 +2,16 @@ package com.solvd.secondBlock.persistence.mybatisimpl;
 
 import com.solvd.secondBlock.model.SportType;
 import com.solvd.secondBlock.persistence.SportTypeRepository;
-import com.solvd.secondBlock.persistence.UniversalDao;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SportTypeRepositoryBatisImpl implements SportTypeRepository {
-
-    private SqlSessionFactory sessionFactory;
 
     @Override
     public void create(SportType entity) throws InterruptedException {
@@ -25,27 +20,20 @@ public class SportTypeRepositoryBatisImpl implements SportTypeRepository {
 
             SportTypeRepository sportRepository = sqlSession.getMapper(SportTypeRepository.class);
             sportRepository.create(entity);
-
-            sqlSession.commit();  // Remember to commit changes
         } catch (IOException e) {
-            throw new RuntimeException("Error initializing SportTypeDao", e);
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void updateById(Long id, SportType updatedEntity) throws InterruptedException {
+    public void updateById(@Param("id") Long id, @Param("updated") SportType updatedEntity) throws InterruptedException {
         try (InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
              SqlSession sqlSession = new SqlSessionFactoryBuilder().build(is).openSession(true)) {
 
-            SportTypeRepository sportRepository = sqlSession.getMapper(SportTypeRepository.class);
-            Map<String, Object> params = new HashMap<>();
-            params.put("id", id);
-            params.put("updatedEntity", updatedEntity);
-            sportRepository.updateById(id, updatedEntity);
-
-            sqlSession.commit();  // Remember to commit changes
+            SportTypeRepository sportTypeRepository = sqlSession.getMapper(SportTypeRepository.class);
+            sportTypeRepository.updateById(id, updatedEntity);
         } catch (IOException e) {
-            throw new RuntimeException("Error initializing SportTypeDao", e);
+            throw new RuntimeException(e);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -58,10 +46,8 @@ public class SportTypeRepositoryBatisImpl implements SportTypeRepository {
 
             SportTypeRepository sportRepository = sqlSession.getMapper(SportTypeRepository.class);
             sportRepository.deleteById(id);
-
-            sqlSession.commit();  // Remember to commit changes
         } catch (IOException e) {
-            throw new RuntimeException("Error initializing SportTypeDao", e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -73,12 +59,21 @@ public class SportTypeRepositoryBatisImpl implements SportTypeRepository {
             SportTypeRepository sportRepository = sqlSession.getMapper(SportTypeRepository.class);
             return sportRepository.findById(id);
         } catch (IOException e) {
-            throw new RuntimeException("Error initializing SportTypeDao", e);
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public SportType findBySportID(Long sportId) throws InterruptedException {
-        return null;
+    public SportType findBySportID(Long sportId) {
+        try (InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
+             SqlSession sqlSession = new SqlSessionFactoryBuilder().build(is).openSession(true)) {
+
+            SportTypeRepository sportRepository = sqlSession.getMapper(SportTypeRepository.class);
+            return sportRepository.findBySportID(sportId);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

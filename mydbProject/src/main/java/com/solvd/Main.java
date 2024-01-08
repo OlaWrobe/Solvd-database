@@ -1,11 +1,23 @@
 package com.solvd;
 
+import com.solvd.secondBlock.model.Participant;
+import com.solvd.secondBlock.model.Sport;
 import com.solvd.secondBlock.model.SportType;
+import com.solvd.secondBlock.persistence.ParticipantRepository;
+import com.solvd.secondBlock.persistence.impl.ParticipantRepositoryImpl;
 import com.solvd.secondBlock.persistence.mybatisimpl.SportTypeRepositoryBatisImpl;
+import com.solvd.secondBlock.service.ParticipantService;
+import com.solvd.secondBlock.service.SportService;
+import com.solvd.secondBlock.service.SportTypeService;
+import com.solvd.secondBlock.service.impl.ParticipantServiceImpl;
+import com.solvd.secondBlock.service.impl.SportServiceImpl;
+import com.solvd.secondBlock.service.impl.SportTypeServiceImpl;
+import com.solvd.secondBlock.service.mybatisimpl.SportServiceBatisImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class Main {
     static {
@@ -42,21 +54,53 @@ public class Main {
 //            LOGGER.info("data with index 4 deleted");
 //            throw new NullPointerException();
 //        }
-        try {
-            SportTypeRepositoryBatisImpl sportTypeDao = new SportTypeRepositoryBatisImpl();
+//        try {
+//            SportTypeRepositoryBatisImpl sportTypeDao = new SportTypeRepositoryBatisImpl();
+//
+//            // Example: Find a SportType by ID
+//            Long sportTypeIdToFind = 3L; // Replace with the actual ID
+//            SportType foundSportType = sportTypeDao.findById(sportTypeIdToFind);
+//
+//            if (foundSportType != null) {
+//                System.out.println("Found SportType with ID " + sportTypeIdToFind + ": " + foundSportType.getName());
+//            } else {
+//                System.out.println("SportType not found with ID: " + sportTypeIdToFind);
+//            }
+//
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException("Error performing database operation", e);
+//        }
 
-            // Example: Find a SportType by ID
-            Long sportTypeIdToFind = 3L; // Replace with the actual ID
-            SportType foundSportType = sportTypeDao.findById(sportTypeIdToFind);
+        //MYBATIS
+        SportService sportService = new SportServiceBatisImpl();
+        SportTypeService sportTypeService = new SportTypeServiceImpl();
 
-            if (foundSportType != null) {
-                System.out.println("Found SportType with ID " + sportTypeIdToFind + ": " + foundSportType.getName());
-            } else {
-                System.out.println("SportType not found with ID: " + sportTypeIdToFind);
-            }
+        SportType sportType = sportTypeService.findById(1L);
 
-        } catch (InterruptedException e) {
-            throw new RuntimeException("Error performing database operation", e);
-        }
+        Sport sport = new Sport(null, sportType, "Soccer", "Description for Soccer");
+
+        sportService.create(sport);
+        LOGGER.info("Created Sport: " + sport.getName());
+
+        Sport retrievedSport = sportService.findById(1L);
+        LOGGER.info("Retrieved Sport by ID: " + retrievedSport.getDescription());
+
+        retrievedSport.setName("Footballxd");
+        sportService.updateById(2L, retrievedSport);
+        LOGGER.info("Updated Sport to name footballxd: " + retrievedSport.getName());
+
+        Long participantId = 1L;
+        Sport sportByParticipant = sportService.findByParticipantId(participantId);
+        LOGGER.info("Sport found by Participant ID " + participantId + ": " + sportByParticipant.getName());
+
+        sportService.deleteById(2L);
+        LOGGER.info("Deleted Sport with ID: " + 2L);
+
+        //business logic
+        ParticipantService participantService = new ParticipantServiceImpl();
+
+        Participant winner = participantService.findWinner();
+        LOGGER.info("winner is player " + winner.getName() + " " + winner.getSurname());
+
     }
 }

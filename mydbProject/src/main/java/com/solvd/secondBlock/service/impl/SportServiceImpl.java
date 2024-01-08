@@ -28,7 +28,7 @@ public class SportServiceImpl implements SportService {
         return sport;
     }
 
-    public Sport getById(Long id) throws InterruptedException {
+    public Sport findById(Long id) throws InterruptedException {
         Sport sport = sportRepository.findById(id);
         SportType sportType = sportTypeService.findBySportId(sport.getId());
         sport.setSportType(sportType);

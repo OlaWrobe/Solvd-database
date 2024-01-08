@@ -73,24 +73,33 @@ public class ParticipantServiceImpl implements ParticipantService {
     public Participant findWinner() throws InterruptedException {
         Participant winner = null;
         Time time = new Time(24, 00, 00);
+        List<Participant> list = this.findAll();
 
-        for (Participant participant : participantRepository.findAll()) {
-            for (IndividualScore score : participant.getIndividualScoreList()
-            ) {
-                Time scoreTime = score.getTime();
-                int result = time.compareTo(scoreTime);
-                if (result > 0) {
-                    winner = participant;
+        for (Participant participant : list) {
+            if (participant.getIndividualScoreList().size() > 0) {
+                for (IndividualScore score : participant.getIndividualScoreList()
+                ) {
+                    Time scoreTime = score.getTime();
+                    int result = time.compareTo(scoreTime);
+
+                    if (result > 0) {
+                        winner = participant;
+                    }
                     time = scoreTime;
+
                 }
             }
-
-            return winner;
         }
-        return null;
+        return winner;
     }
 
     public List<Participant> findAll() throws InterruptedException {
-        return this.participantRepository.findAll();
+        List<Participant> participantList = this.participantRepository.findAll();
+        for (Participant participant : participantList
+        ) {
+            List<IndividualScore> individualScoreList = individualScoreService.findIndividualScoresById(participant.getId());
+            participant.setIndividualScoreList(individualScoreList);
+        }
+        return participantList;
     }
 }

@@ -23,5 +23,6 @@
 
     <mappers>
         <mapper resource="mappers/SportTypeMapper.xml"/>
+        <mapper resource="mappers/SportMapper.xml"/>
     </mappers>
 </configuration>
