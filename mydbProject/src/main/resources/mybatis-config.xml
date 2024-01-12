@@ -11,7 +11,6 @@
             <transactionManager type="JDBC"/>
 
             <dataSource type="POOLED">
-                <!-- Use placeholders -->
                 <property name="driver" value="${driver}"/>
                 <property name="url" value="${url}"/>
                 <property name="username" value="${user}"/>
@@ -24,5 +23,11 @@
     <mappers>
         <mapper resource="mappers/SportTypeMapper.xml"/>
         <mapper resource="mappers/SportMapper.xml"/>
+        <mapper resource="mappers/CountryMapper.xml"/>
+        <mapper resource="mappers/IndividualScoreMapper.xml"/>
+        <mapper resource="mappers/ParticipantMapper.xml"/>
+        <mapper resource="mappers/TeamMapper.xml"/>
+        <mapper resource="mappers/TeamScoreMapper.xml"/>
+        <mapper resource="mappers/VenueMapper.xml"/>
     </mappers>
 </configuration>

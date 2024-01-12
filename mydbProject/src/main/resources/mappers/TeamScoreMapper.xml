@@ -1,0 +1,33 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.secondBlock.persistence.TeamScoreRepository">
+    <resultMap id="teamScoreResultMap" type="com.solvd.secondBlock.model.TeamScore">
+        <id property="id" column="id"/>
+        <result property="teamPoints" column="team_points"/>
+        <result property="teamTime" column="team_time"/>
+    </resultMap>
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO team_scores(team_points, team_time) VALUES (#{teamPoints}, #{teamTime})
+    </insert>
+
+    <update id="updateById">
+        UPDATE team_scores SET team_points=#{updated.teamPoints}, team_time=#{updated.teamTime} WHERE id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM team_scores WHERE id=#{id}
+    </delete>
+
+    <select id="findById" resultMap="teamScoreResultMap">
+        SELECT * FROM team_scores WHERE id=#{id}
+    </select>
+
+    <select id="findScoresById" resultMap="teamScoreResultMap">
+        SELECT ts.id, ts.game_id, ts.team_id, ts.team_points, ts.team_time
+        FROM team_scores ts
+        LEFT JOIN teams t ON t.id = ts.team_id
+        WHERE t.id=#{id}
+    </select>
+
+</mapper>

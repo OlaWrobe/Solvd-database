@@ -1,0 +1,104 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="olympics">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sports" type="sports"/>
+                <xs:element name="teams" type="teams"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="sports">
+        <xs:sequence>
+            <xs:element name="sport" type="sport" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="sport">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="sportType" type="sportType"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="sportType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="isIndividual" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="participant">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="country" type="country"/>
+            <xs:element name="sport" type="sport"/>
+            <xs:element name="pname" type="xs:string"/>
+            <xs:element name="surname" type="xs:string"/>
+            <xs:element name="birthdate" type="xs:date"/>
+            <xs:element name="gender" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="individualScoreList" type="individualScoreList"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="country">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="countryName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="individualScoreList">
+        <xs:sequence>
+            <xs:element name="individualScore" type="individualScore" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="individualScore">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="time" type="xs:time"/>
+            <xs:element name="points" type="xs:int"/>
+            <xs:element name="distance" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="teams">
+        <xs:sequence>
+            <xs:element name="team" type="team"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="captain">
+        <xs:sequence>
+            <xs:element name="participant" type="participant"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="players">
+        <xs:sequence>
+            <xs:element name="participant" type="participant" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="teamScoreList">
+        <xs:sequence>
+            <xs:element name="teamScore" type="teamScore" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="teamScore">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="teamPoints" type="xs:int"/>
+            <xs:element name="teamTime" type="xs:time"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="team">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="country" type="country"/>
+            <xs:element name="captain" type="captain"/>
+            <xs:element name="teamName" type="xs:string"/>
+            <xs:element name="squadSize" type="xs:int"/>
+            <xs:element name="players" type="players"/>
+            <xs:element name="teamScoreList" type="teamScoreList"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

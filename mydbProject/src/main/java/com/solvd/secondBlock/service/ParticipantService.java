@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ParticipantService {
-    public Participant create(Participant participant) throws InterruptedException;
+    public void create(Participant participant) throws InterruptedException;
 
     public void updateById(Long id, Participant updatedParticipant) throws InterruptedException, SQLException;
 

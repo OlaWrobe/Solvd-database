@@ -1,0 +1,37 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.secondBlock.persistence.IndividualScoreRepository">
+
+    <resultMap id="individualScoreResultMap" type="com.solvd.secondBlock.model.IndividualScore">
+        <id property="id" column="id"/>
+        <result property="time" column="time"/>
+        <result property="points" column="points"/>
+        <result property="distance" column="distance"/>
+    </resultMap>
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO individual_scores(time,participant_id,game_id, points, distance) VALUES (#{time}, #{points},
+        #{distance})
+    </insert>
+
+    <update id="updateById">
+        UPDATE individual_scores SET time=#{updated.time}, points=#{updated.points}, distance=#{updated.distance} WHERE
+        id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM individual_scores WHERE id=#{id}
+    </delete>
+
+    <select id="findById" resultMap="individualScoreResultMap">
+        SELECT * FROM individual_scores WHERE id=#{id}
+    </select>
+
+    <select id="findIndividualScoresById" resultMap="individualScoreResultMap">
+        SELECT ins.id, ins.time, ins.points, ins.distance
+        FROM individual_scores ins
+        LEFT JOIN participants p ON ins.participant_id = p.id
+        WHERE p.id=#{id}
+    </select>
+
+</mapper>

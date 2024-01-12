@@ -1,0 +1,30 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.secondBlock.persistence.TeamRepository">
+
+    <resultMap id="teamResultMap" type="com.solvd.secondBlock.model.Team">
+        <id property="id" column="id"/>
+        <result property="teamName" column="team_name"/>
+        <result property="squadSize" column="squad_size"/>
+    </resultMap>
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO teams(country_id, captain_id, team_name, squad_size) VALUES (#{country.id}, #{captain.id},
+        #{teamName}, #{squadSize})
+    </insert>
+
+    <update id="updateById">
+        UPDATE teams SET country_id=#{updated.country.id}, captain_id=#{updated.captain.id},
+        team_name=#{updated.teamName},
+        squad_size=#{updated.squadSize} WHERE id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM teams WHERE id=#{id}
+    </delete>
+
+    <select id="findById" resultMap="teamResultMap">
+        SELECT * FROM teams WHERE id=#{id}
+    </select>
+
+</mapper>

@@ -4,3 +4,404 @@
 02:18:03.922 [main] INFO  com.solvd.Main - Sport found by Participant ID 1: Football
 02:18:04.102 [main] INFO  com.solvd.Main - Deleted Sport with ID: 2
 02:18:04.154 [main] INFO  com.solvd.Main - winner is player LeBron James
+03:06:58.488 [main] INFO  com.solvd.Main - Root Element :olympics
+03:06:58.493 [main] INFO  com.solvd.Main - ------
+03:06:58.494 [main] INFO  com.solvd.Main - Sport ID: 1
+03:06:58.495 [main] INFO  com.solvd.Main - Sport Name: SportType1
+03:06:58.495 [main] INFO  com.solvd.Main - Sport Description: Description1
+03:06:58.496 [main] INFO  com.solvd.Main - Sport Type ID: 1
+03:06:58.496 [main] INFO  com.solvd.Main - Sport Type Name: SportType1
+03:06:58.496 [main] INFO  com.solvd.Main - Is Individual: true
+03:06:58.497 [main] INFO  com.solvd.Main - ------
+03:06:58.497 [main] INFO  com.solvd.Main - Team ID: 1
+03:06:58.498 [main] INFO  com.solvd.Main - Team Name: Team1
+03:06:58.498 [main] INFO  com.solvd.Main - Squad Size: 20
+03:06:58.498 [main] INFO  com.solvd.Main - Captain ID: 1
+03:06:58.499 [main] INFO  com.solvd.Main - Captain Name: Participant1
+03:06:58.499 [main] INFO  com.solvd.Main - Captain Surname: Surname1
+03:06:58.499 [main] INFO  com.solvd.Main - Captain Birthdate: 2000-01-01
+03:06:58.500 [main] INFO  com.solvd.Main - Captain Gender: Male
+03:06:58.500 [main] INFO  com.solvd.Main - Captain Email: participant1@example.com
+03:06:58.500 [main] INFO  com.solvd.Main -   Player ID: 1
+03:06:58.501 [main] INFO  com.solvd.Main -   Player Name: Participant1
+03:06:58.501 [main] INFO  com.solvd.Main -   Player Surname: Surname1
+03:06:58.501 [main] INFO  com.solvd.Main -   Player Birthdate: 2000-01-01
+03:06:58.501 [main] INFO  com.solvd.Main -   Player Gender: Male
+03:06:58.502 [main] INFO  com.solvd.Main -   Player Email: participant1@example.com
+03:06:58.502 [main] INFO  com.solvd.Main -     Individual Score ID: 1
+03:06:58.502 [main] INFO  com.solvd.Main -     Time: 10:10:10
+03:06:58.503 [main] INFO  com.solvd.Main -     Points: 2
+03:06:58.503 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:06:58.503 [main] INFO  com.solvd.Main -     Individual Score ID: 2
+03:06:58.503 [main] INFO  com.solvd.Main -     Time: 00:00:00
+03:06:58.503 [main] INFO  com.solvd.Main -     Points: 4
+03:06:58.503 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:06:58.504 [main] INFO  com.solvd.Main -   Player ID: 1
+03:06:58.504 [main] INFO  com.solvd.Main -   Player Name: Participant1
+03:06:58.504 [main] INFO  com.solvd.Main -   Player Surname: Surname1
+03:06:58.504 [main] INFO  com.solvd.Main -   Player Birthdate: 2000-01-01
+03:06:58.504 [main] INFO  com.solvd.Main -   Player Gender: Male
+03:06:58.505 [main] INFO  com.solvd.Main -   Player Email: participant1@example.com
+03:06:58.505 [main] INFO  com.solvd.Main -     Individual Score ID: 1
+03:06:58.505 [main] INFO  com.solvd.Main -     Time: 00:00:00
+03:06:58.505 [main] INFO  com.solvd.Main -     Points: 2
+03:06:58.505 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:06:58.505 [main] INFO  com.solvd.Main -     Individual Score ID: 2
+03:06:58.506 [main] INFO  com.solvd.Main -     Time: 01:01:01
+03:06:58.506 [main] INFO  com.solvd.Main -     Points: 4
+03:06:58.506 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:06:58.506 [main] INFO  com.solvd.Main -   Player ID: 2
+03:06:58.507 [main] INFO  com.solvd.Main -   Player Name: Participant2
+03:06:58.507 [main] INFO  com.solvd.Main -   Player Surname: Surname2
+03:06:58.507 [main] INFO  com.solvd.Main -   Player Birthdate: 1995-05-15
+03:06:58.507 [main] INFO  com.solvd.Main -   Player Gender: Female
+03:06:58.507 [main] INFO  com.solvd.Main -   Player Email: participant2@example.com
+03:06:58.507 [main] INFO  com.solvd.Main -     Individual Score ID: 3
+03:06:58.508 [main] INFO  com.solvd.Main -     Time: 02:02:20
+03:06:58.508 [main] INFO  com.solvd.Main -     Points: 3
+03:06:58.508 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:06:58.508 [main] INFO  com.solvd.Main -     Individual Score ID: 4
+03:06:58.508 [main] INFO  com.solvd.Main -     Time: 02:02:02
+03:06:58.509 [main] INFO  com.solvd.Main -     Points: 5
+03:06:58.509 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:06:58.509 [main] INFO  com.solvd.Main - Team Score ID: 1
+03:06:58.510 [main] INFO  com.solvd.Main - Team Points: 100
+03:06:58.510 [main] INFO  com.solvd.Main - Team Time: 00:15:30
+03:06:58.510 [main] INFO  com.solvd.Main - Team Score ID: 2
+03:06:58.510 [main] INFO  com.solvd.Main - Team Points: 75
+03:06:58.510 [main] INFO  com.solvd.Main - Team Time: 00:20:45
+03:07:33.410 [main] INFO  com.solvd.Main - Root Element :olympics
+03:07:33.415 [main] INFO  com.solvd.Main - ------
+03:07:33.417 [main] INFO  com.solvd.Main - Sport ID: 1
+03:07:33.417 [main] INFO  com.solvd.Main - Sport Name: SportType1
+03:07:33.417 [main] INFO  com.solvd.Main - Sport Description: Description1
+03:07:33.418 [main] INFO  com.solvd.Main - Sport Type ID: 1
+03:07:33.418 [main] INFO  com.solvd.Main - Sport Type Name: SportType1
+03:07:33.418 [main] INFO  com.solvd.Main - Is Individual: true
+03:07:33.419 [main] INFO  com.solvd.Main - ------
+03:07:33.420 [main] INFO  com.solvd.Main - Team ID: 1
+03:07:33.420 [main] INFO  com.solvd.Main - Team Name: Team1
+03:07:33.420 [main] INFO  com.solvd.Main - Squad Size: 20
+03:07:33.421 [main] INFO  com.solvd.Main - Captain ID: 1
+03:07:33.421 [main] INFO  com.solvd.Main - Captain Name: Participant1
+03:07:33.421 [main] INFO  com.solvd.Main - Captain Surname: Surname1
+03:07:33.422 [main] INFO  com.solvd.Main - Captain Birthdate: 2000-01-01
+03:07:33.422 [main] INFO  com.solvd.Main - Captain Gender: Male
+03:07:33.422 [main] INFO  com.solvd.Main - Captain Email: participant1@example.com
+03:07:33.423 [main] INFO  com.solvd.Main -   Player ID: 1
+03:07:33.423 [main] INFO  com.solvd.Main -   Player Name: Participant1
+03:07:33.424 [main] INFO  com.solvd.Main -   Player Surname: Surname1
+03:07:33.424 [main] INFO  com.solvd.Main -   Player Birthdate: 2000-01-01
+03:07:33.424 [main] INFO  com.solvd.Main -   Player Gender: Male
+03:07:33.425 [main] INFO  com.solvd.Main -   Player Email: participant1@example.com
+03:07:33.425 [main] INFO  com.solvd.Main -     Individual Score ID: 1
+03:07:33.425 [main] INFO  com.solvd.Main -     Time: 10:10:10
+03:07:33.426 [main] INFO  com.solvd.Main -     Points: 2
+03:07:33.426 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:07:33.426 [main] INFO  com.solvd.Main -     Individual Score ID: 2
+03:07:33.426 [main] INFO  com.solvd.Main -     Time: 00:00:00
+03:07:33.426 [main] INFO  com.solvd.Main -     Points: 4
+03:07:33.427 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:07:33.427 [main] INFO  com.solvd.Main -   Player ID: 1
+03:07:33.427 [main] INFO  com.solvd.Main -   Player Name: Participant1
+03:07:33.428 [main] INFO  com.solvd.Main -   Player Surname: Surname1
+03:07:33.428 [main] INFO  com.solvd.Main -   Player Birthdate: 2000-01-01
+03:07:33.428 [main] INFO  com.solvd.Main -   Player Gender: Male
+03:07:33.428 [main] INFO  com.solvd.Main -   Player Email: participant1@example.com
+03:07:33.428 [main] INFO  com.solvd.Main -     Individual Score ID: 1
+03:07:33.428 [main] INFO  com.solvd.Main -     Time: 00:00:00
+03:07:33.428 [main] INFO  com.solvd.Main -     Points: 2
+03:07:33.429 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:07:33.429 [main] INFO  com.solvd.Main -     Individual Score ID: 2
+03:07:33.429 [main] INFO  com.solvd.Main -     Time: 01:01:01
+03:07:33.429 [main] INFO  com.solvd.Main -     Points: 4
+03:07:33.429 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:07:33.429 [main] INFO  com.solvd.Main -   Player ID: 2
+03:07:33.429 [main] INFO  com.solvd.Main -   Player Name: Participant2
+03:07:33.430 [main] INFO  com.solvd.Main -   Player Surname: Surname2
+03:07:33.430 [main] INFO  com.solvd.Main -   Player Birthdate: 1995-05-15
+03:07:33.430 [main] INFO  com.solvd.Main -   Player Gender: Female
+03:07:33.430 [main] INFO  com.solvd.Main -   Player Email: participant2@example.com
+03:07:33.430 [main] INFO  com.solvd.Main -     Individual Score ID: 3
+03:07:33.431 [main] INFO  com.solvd.Main -     Time: 02:02:20
+03:07:33.431 [main] INFO  com.solvd.Main -     Points: 3
+03:07:33.431 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:07:33.431 [main] INFO  com.solvd.Main -     Individual Score ID: 4
+03:07:33.431 [main] INFO  com.solvd.Main -     Time: 02:02:02
+03:07:33.431 [main] INFO  com.solvd.Main -     Points: 5
+03:07:33.431 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:07:33.432 [main] INFO  com.solvd.Main - Team Score ID: 1
+03:07:33.432 [main] INFO  com.solvd.Main - Team Points: 100
+03:07:33.432 [main] INFO  com.solvd.Main - Team Time: 00:15:30
+03:07:33.433 [main] INFO  com.solvd.Main - Team Score ID: 2
+03:07:33.433 [main] INFO  com.solvd.Main - Team Points: 75
+03:07:33.433 [main] INFO  com.solvd.Main - Team Time: 00:20:45
+03:07:33.433 [main] INFO  com.solvd.Main - ------
+03:07:55.063 [main] INFO  com.solvd.Main - Root Element :olympics
+03:07:55.068 [main] INFO  com.solvd.Main - ------
+03:07:55.069 [main] INFO  com.solvd.Main - Sport ID: 1
+03:07:55.070 [main] INFO  com.solvd.Main - Sport Name: SportType1
+03:07:55.070 [main] INFO  com.solvd.Main - Sport Description: Description1
+03:07:55.070 [main] INFO  com.solvd.Main - Sport Type ID: 1
+03:07:55.071 [main] INFO  com.solvd.Main - Sport Type Name: SportType1
+03:07:55.071 [main] INFO  com.solvd.Main - Is Individual: true
+03:07:55.071 [main] INFO  com.solvd.Main - ------
+03:07:55.072 [main] INFO  com.solvd.Main - Team ID: 1
+03:07:55.072 [main] INFO  com.solvd.Main - Team Name: Team1
+03:07:55.073 [main] INFO  com.solvd.Main - Squad Size: 20
+03:07:55.073 [main] INFO  com.solvd.Main - Captain ID: 1
+03:07:55.073 [main] INFO  com.solvd.Main - Captain Name: Participant1
+03:07:55.074 [main] INFO  com.solvd.Main - Captain Surname: Surname1
+03:07:55.074 [main] INFO  com.solvd.Main - Captain Birthdate: 2000-01-01
+03:07:55.074 [main] INFO  com.solvd.Main - Captain Gender: Male
+03:07:55.074 [main] INFO  com.solvd.Main - Captain Email: participant1@example.com
+03:07:55.075 [main] INFO  com.solvd.Main -   Player ID: 1
+03:07:55.075 [main] INFO  com.solvd.Main -   Player Name: Participant1
+03:07:55.075 [main] INFO  com.solvd.Main -   Player Surname: Surname1
+03:07:55.075 [main] INFO  com.solvd.Main -   Player Birthdate: 2000-01-01
+03:07:55.076 [main] INFO  com.solvd.Main -   Player Gender: Male
+03:07:55.076 [main] INFO  com.solvd.Main -   Player Email: participant1@example.com
+03:07:55.076 [main] INFO  com.solvd.Main -     Individual Score ID: 1
+03:07:55.076 [main] INFO  com.solvd.Main -     Time: 10:10:10
+03:07:55.076 [main] INFO  com.solvd.Main -     Points: 2
+03:07:55.077 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:07:55.077 [main] INFO  com.solvd.Main -     Individual Score ID: 2
+03:07:55.077 [main] INFO  com.solvd.Main -     Time: 00:00:00
+03:07:55.077 [main] INFO  com.solvd.Main -     Points: 4
+03:07:55.077 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:07:55.078 [main] INFO  com.solvd.Main -   Player ID: 1
+03:07:55.078 [main] INFO  com.solvd.Main -   Player Name: Participant1
+03:07:55.078 [main] INFO  com.solvd.Main -   Player Surname: Surname1
+03:07:55.078 [main] INFO  com.solvd.Main -   Player Birthdate: 2000-01-01
+03:07:55.078 [main] INFO  com.solvd.Main -   Player Gender: Male
+03:07:55.078 [main] INFO  com.solvd.Main -   Player Email: participant1@example.com
+03:07:55.078 [main] INFO  com.solvd.Main -     Individual Score ID: 1
+03:07:55.079 [main] INFO  com.solvd.Main -     Time: 00:00:00
+03:07:55.079 [main] INFO  com.solvd.Main -     Points: 2
+03:07:55.079 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:07:55.079 [main] INFO  com.solvd.Main -     Individual Score ID: 2
+03:07:55.079 [main] INFO  com.solvd.Main -     Time: 01:01:01
+03:07:55.079 [main] INFO  com.solvd.Main -     Points: 4
+03:07:55.080 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:07:55.080 [main] INFO  com.solvd.Main -   Player ID: 2
+03:07:55.080 [main] INFO  com.solvd.Main -   Player Name: Participant2
+03:07:55.080 [main] INFO  com.solvd.Main -   Player Surname: Surname2
+03:07:55.080 [main] INFO  com.solvd.Main -   Player Birthdate: 1995-05-15
+03:07:55.081 [main] INFO  com.solvd.Main -   Player Gender: Female
+03:07:55.081 [main] INFO  com.solvd.Main -   Player Email: participant2@example.com
+03:07:55.081 [main] INFO  com.solvd.Main -     Individual Score ID: 3
+03:07:55.081 [main] INFO  com.solvd.Main -     Time: 02:02:20
+03:07:55.081 [main] INFO  com.solvd.Main -     Points: 3
+03:07:55.082 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:07:55.082 [main] INFO  com.solvd.Main -     Individual Score ID: 4
+03:07:55.082 [main] INFO  com.solvd.Main -     Time: 02:02:02
+03:07:55.082 [main] INFO  com.solvd.Main -     Points: 5
+03:07:55.082 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:07:55.083 [main] INFO  com.solvd.Main - Team Score ID: 1
+03:07:55.083 [main] INFO  com.solvd.Main - Team Points: 100
+03:07:55.083 [main] INFO  com.solvd.Main - Team Time: 00:15:30
+03:07:55.084 [main] INFO  com.solvd.Main - Team Score ID: 2
+03:07:55.084 [main] INFO  com.solvd.Main - Team Points: 75
+03:07:55.084 [main] INFO  com.solvd.Main - Team Time: 00:20:45
+03:07:55.084 [main] INFO  com.solvd.Main - ------
+03:08:23.781 [main] INFO  com.solvd.Main - Root Element :olympics
+03:08:23.787 [main] INFO  com.solvd.Main - ------
+03:08:23.788 [main] INFO  com.solvd.Main - Sport ID: 1
+03:08:23.789 [main] INFO  com.solvd.Main - Sport Name: SportType1
+03:08:23.789 [main] INFO  com.solvd.Main - Sport Description: Description1
+03:08:23.789 [main] INFO  com.solvd.Main - Sport Type ID: 1
+03:08:23.790 [main] INFO  com.solvd.Main - Sport Type Name: SportType1
+03:08:23.790 [main] INFO  com.solvd.Main - Is Individual: true
+03:08:23.791 [main] INFO  com.solvd.Main - ------
+03:08:23.792 [main] INFO  com.solvd.Main - Team ID: 1
+03:08:23.792 [main] INFO  com.solvd.Main - Team Name: Team1
+03:08:23.793 [main] INFO  com.solvd.Main - Squad Size: 20
+03:08:23.793 [main] INFO  com.solvd.Main - Captain ID: 1
+03:08:23.794 [main] INFO  com.solvd.Main - Captain Name: Participant1
+03:08:23.794 [main] INFO  com.solvd.Main - Captain Surname: Surname1
+03:08:23.794 [main] INFO  com.solvd.Main - Captain Birthdate: 2000-01-01
+03:08:23.795 [main] INFO  com.solvd.Main - Captain Gender: Male
+03:08:23.795 [main] INFO  com.solvd.Main - Captain Email: participant1@example.com
+03:08:23.796 [main] INFO  com.solvd.Main -   Player ID: 1
+03:08:23.796 [main] INFO  com.solvd.Main -   Player Name: Participant1
+03:08:23.796 [main] INFO  com.solvd.Main -   Player Surname: Surname1
+03:08:23.796 [main] INFO  com.solvd.Main -   Player Birthdate: 2000-01-01
+03:08:23.797 [main] INFO  com.solvd.Main -   Player Gender: Male
+03:08:23.797 [main] INFO  com.solvd.Main -   Player Email: participant1@example.com
+03:08:23.798 [main] INFO  com.solvd.Main -     Individual Score ID: 1
+03:08:23.798 [main] INFO  com.solvd.Main -     Time: 10:10:10
+03:08:23.798 [main] INFO  com.solvd.Main -     Points: 2
+03:08:23.799 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:08:23.799 [main] INFO  com.solvd.Main -     Individual Score ID: 2
+03:08:23.799 [main] INFO  com.solvd.Main -     Time: 00:00:00
+03:08:23.799 [main] INFO  com.solvd.Main -     Points: 4
+03:08:23.799 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:08:23.800 [main] INFO  com.solvd.Main -   Player ID: 1
+03:08:23.800 [main] INFO  com.solvd.Main -   Player Name: Participant1
+03:08:23.800 [main] INFO  com.solvd.Main -   Player Surname: Surname1
+03:08:23.801 [main] INFO  com.solvd.Main -   Player Birthdate: 2000-01-01
+03:08:23.801 [main] INFO  com.solvd.Main -   Player Gender: Male
+03:08:23.801 [main] INFO  com.solvd.Main -   Player Email: participant1@example.com
+03:08:23.801 [main] INFO  com.solvd.Main -     Individual Score ID: 1
+03:08:23.801 [main] INFO  com.solvd.Main -     Time: 00:00:00
+03:08:23.801 [main] INFO  com.solvd.Main -     Points: 2
+03:08:23.802 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:08:23.802 [main] INFO  com.solvd.Main -     Individual Score ID: 2
+03:08:23.802 [main] INFO  com.solvd.Main -     Time: 01:01:01
+03:08:23.803 [main] INFO  com.solvd.Main -     Points: 4
+03:08:23.803 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:08:23.803 [main] INFO  com.solvd.Main -   Player ID: 2
+03:08:23.803 [main] INFO  com.solvd.Main -   Player Name: Participant2
+03:08:23.804 [main] INFO  com.solvd.Main -   Player Surname: Surname2
+03:08:23.804 [main] INFO  com.solvd.Main -   Player Birthdate: 1995-05-15
+03:08:23.804 [main] INFO  com.solvd.Main -   Player Gender: Female
+03:08:23.804 [main] INFO  com.solvd.Main -   Player Email: participant2@example.com
+03:08:23.805 [main] INFO  com.solvd.Main -     Individual Score ID: 3
+03:08:23.805 [main] INFO  com.solvd.Main -     Time: 02:02:20
+03:08:23.805 [main] INFO  com.solvd.Main -     Points: 3
+03:08:23.805 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:08:23.805 [main] INFO  com.solvd.Main -     Individual Score ID: 4
+03:08:23.806 [main] INFO  com.solvd.Main -     Time: 02:02:02
+03:08:23.806 [main] INFO  com.solvd.Main -     Points: 5
+03:08:23.806 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:08:23.807 [main] INFO  com.solvd.Main - Team Score ID: 1
+03:08:23.807 [main] INFO  com.solvd.Main - Team Points: 100
+03:08:23.808 [main] INFO  com.solvd.Main - Team Time: 00:15:30
+03:08:23.808 [main] INFO  com.solvd.Main - Team Score ID: 2
+03:08:23.808 [main] INFO  com.solvd.Main - Team Points: 75
+03:08:23.809 [main] INFO  com.solvd.Main - Team Time: 00:20:45
+03:08:23.809 [main] INFO  com.solvd.Main - ------
+03:09:03.929 [main] INFO  com.solvd.Main - Root Element :olympics
+03:09:03.936 [main] INFO  com.solvd.Main - ------
+03:09:03.938 [main] INFO  com.solvd.Main - Sport ID: 1
+03:09:03.940 [main] INFO  com.solvd.Main - Sport Name: SportType1
+03:09:03.941 [main] INFO  com.solvd.Main - Sport Description: Description1
+03:09:03.943 [main] INFO  com.solvd.Main - Sport Type ID: 1
+03:09:03.944 [main] INFO  com.solvd.Main - Sport Type Name: SportType1
+03:09:03.946 [main] INFO  com.solvd.Main - Is Individual: true
+03:09:03.951 [main] INFO  com.solvd.Main - ------
+03:09:03.952 [main] INFO  com.solvd.Main - Team ID: 1
+03:09:03.953 [main] INFO  com.solvd.Main - Team Name: Team1
+03:09:03.953 [main] INFO  com.solvd.Main - Squad Size: 20
+03:09:03.955 [main] INFO  com.solvd.Main - Captain ID: 1
+03:09:03.955 [main] INFO  com.solvd.Main - Captain Name: Participant1
+03:09:03.956 [main] INFO  com.solvd.Main - Captain Surname: Surname1
+03:09:03.956 [main] INFO  com.solvd.Main - Captain Birthdate: 2000-01-01
+03:09:03.956 [main] INFO  com.solvd.Main - Captain Gender: Male
+03:09:03.957 [main] INFO  com.solvd.Main - Captain Email: participant1@example.com
+03:09:03.958 [main] INFO  com.solvd.Main -   Player ID: 1
+03:09:03.958 [main] INFO  com.solvd.Main -   Player Name: Participant1
+03:09:03.958 [main] INFO  com.solvd.Main -   Player Surname: Surname1
+03:09:03.959 [main] INFO  com.solvd.Main -   Player Birthdate: 2000-01-01
+03:09:03.960 [main] INFO  com.solvd.Main -   Player Gender: Male
+03:09:03.960 [main] INFO  com.solvd.Main -   Player Email: participant1@example.com
+03:09:03.961 [main] INFO  com.solvd.Main -     Individual Score ID: 1
+03:09:03.962 [main] INFO  com.solvd.Main -     Time: 10:10:10
+03:09:03.962 [main] INFO  com.solvd.Main -     Points: 2
+03:09:03.964 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:09:03.964 [main] INFO  com.solvd.Main -     Individual Score ID: 2
+03:09:03.965 [main] INFO  com.solvd.Main -     Time: 00:00:00
+03:09:03.965 [main] INFO  com.solvd.Main -     Points: 4
+03:09:03.965 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:09:03.966 [main] INFO  com.solvd.Main -   Player ID: 1
+03:09:03.966 [main] INFO  com.solvd.Main -   Player Name: Participant1
+03:09:03.966 [main] INFO  com.solvd.Main -   Player Surname: Surname1
+03:09:03.966 [main] INFO  com.solvd.Main -   Player Birthdate: 2000-01-01
+03:09:03.966 [main] INFO  com.solvd.Main -   Player Gender: Male
+03:09:03.966 [main] INFO  com.solvd.Main -   Player Email: participant1@example.com
+03:09:03.967 [main] INFO  com.solvd.Main -     Individual Score ID: 1
+03:09:03.967 [main] INFO  com.solvd.Main -     Time: 00:00:00
+03:09:03.967 [main] INFO  com.solvd.Main -     Points: 2
+03:09:03.967 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:09:03.968 [main] INFO  com.solvd.Main -     Individual Score ID: 2
+03:09:03.968 [main] INFO  com.solvd.Main -     Time: 01:01:01
+03:09:03.968 [main] INFO  com.solvd.Main -     Points: 4
+03:09:03.968 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:09:03.969 [main] INFO  com.solvd.Main -   Player ID: 2
+03:09:03.969 [main] INFO  com.solvd.Main -   Player Name: Participant2
+03:09:03.969 [main] INFO  com.solvd.Main -   Player Surname: Surname2
+03:09:03.969 [main] INFO  com.solvd.Main -   Player Birthdate: 1995-05-15
+03:09:03.969 [main] INFO  com.solvd.Main -   Player Gender: Female
+03:09:03.970 [main] INFO  com.solvd.Main -   Player Email: participant2@example.com
+03:09:03.970 [main] INFO  com.solvd.Main -     Individual Score ID: 3
+03:09:03.970 [main] INFO  com.solvd.Main -     Time: 02:02:20
+03:09:03.970 [main] INFO  com.solvd.Main -     Points: 3
+03:09:03.970 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:09:03.971 [main] INFO  com.solvd.Main -     Individual Score ID: 4
+03:09:03.971 [main] INFO  com.solvd.Main -     Time: 02:02:02
+03:09:03.971 [main] INFO  com.solvd.Main -     Points: 5
+03:09:03.971 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:09:03.972 [main] INFO  com.solvd.Main - Team Score ID: 1
+03:09:03.972 [main] INFO  com.solvd.Main - Team Points: 100
+03:09:03.972 [main] INFO  com.solvd.Main - Team Time: 00:15:30
+03:09:03.973 [main] INFO  com.solvd.Main - Team Score ID: 2
+03:09:03.973 [main] INFO  com.solvd.Main - Team Points: 75
+03:09:03.973 [main] INFO  com.solvd.Main - Team Time: 00:20:45
+03:09:03.974 [main] INFO  com.solvd.Main - ------
+03:09:22.021 [main] INFO  com.solvd.Main - Root Element :olympics
+03:09:22.028 [main] INFO  com.solvd.Main - ------
+03:09:22.031 [main] INFO  com.solvd.Main - Sport ID: 1
+03:09:22.031 [main] INFO  com.solvd.Main - Sport Name: SportType1
+03:09:22.032 [main] INFO  com.solvd.Main - Sport Description: Description1
+03:09:22.032 [main] INFO  com.solvd.Main - Sport Type ID: 1
+03:09:22.032 [main] INFO  com.solvd.Main - Sport Type Name: SportType1
+03:09:22.033 [main] INFO  com.solvd.Main - Is Individual: true
+03:09:22.033 [main] INFO  com.solvd.Main - ------
+03:09:22.034 [main] INFO  com.solvd.Main - Team ID: 1
+03:09:22.035 [main] INFO  com.solvd.Main - Team Name: Team1
+03:09:22.035 [main] INFO  com.solvd.Main - Squad Size: 20
+03:09:22.036 [main] INFO  com.solvd.Main - Captain ID: 1
+03:09:22.036 [main] INFO  com.solvd.Main - Captain Name: Participant1
+03:09:22.037 [main] INFO  com.solvd.Main - Captain Surname: Surname1
+03:09:22.037 [main] INFO  com.solvd.Main - Captain Birthdate: 2000-01-01
+03:09:22.037 [main] INFO  com.solvd.Main - Captain Gender: Male
+03:09:22.038 [main] INFO  com.solvd.Main - Captain Email: participant1@example.com
+03:09:22.038 [main] INFO  com.solvd.Main -   Player ID: 1
+03:09:22.038 [main] INFO  com.solvd.Main -   Player Name: Participant1
+03:09:22.039 [main] INFO  com.solvd.Main -   Player Surname: Surname1
+03:09:22.039 [main] INFO  com.solvd.Main -   Player Birthdate: 2000-01-01
+03:09:22.039 [main] INFO  com.solvd.Main -   Player Gender: Male
+03:09:22.039 [main] INFO  com.solvd.Main -   Player Email: participant1@example.com
+03:09:22.040 [main] INFO  com.solvd.Main -     Individual Score ID: 1
+03:09:22.040 [main] INFO  com.solvd.Main -     Time: 10:10:10
+03:09:22.041 [main] INFO  com.solvd.Main -     Points: 2
+03:09:22.041 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:09:22.041 [main] INFO  com.solvd.Main -     Individual Score ID: 2
+03:09:22.041 [main] INFO  com.solvd.Main -     Time: 00:00:00
+03:09:22.041 [main] INFO  com.solvd.Main -     Points: 4
+03:09:22.042 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:09:22.042 [main] INFO  com.solvd.Main -   Player ID: 1
+03:09:22.043 [main] INFO  com.solvd.Main -   Player Name: Participant1
+03:09:22.043 [main] INFO  com.solvd.Main -   Player Surname: Surname1
+03:09:22.043 [main] INFO  com.solvd.Main -   Player Birthdate: 2000-01-01
+03:09:22.044 [main] INFO  com.solvd.Main -   Player Gender: Male
+03:09:22.044 [main] INFO  com.solvd.Main -   Player Email: participant1@example.com
+03:09:22.044 [main] INFO  com.solvd.Main -     Individual Score ID: 1
+03:09:22.045 [main] INFO  com.solvd.Main -     Time: 00:00:00
+03:09:22.045 [main] INFO  com.solvd.Main -     Points: 2
+03:09:22.045 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:09:22.045 [main] INFO  com.solvd.Main -     Individual Score ID: 2
+03:09:22.046 [main] INFO  com.solvd.Main -     Time: 01:01:01
+03:09:22.047 [main] INFO  com.solvd.Main -     Points: 4
+03:09:22.047 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:09:22.048 [main] INFO  com.solvd.Main -   Player ID: 2
+03:09:22.049 [main] INFO  com.solvd.Main -   Player Name: Participant2
+03:09:22.049 [main] INFO  com.solvd.Main -   Player Surname: Surname2
+03:09:22.049 [main] INFO  com.solvd.Main -   Player Birthdate: 1995-05-15
+03:09:22.049 [main] INFO  com.solvd.Main -   Player Gender: Female
+03:09:22.050 [main] INFO  com.solvd.Main -   Player Email: participant2@example.com
+03:09:22.050 [main] INFO  com.solvd.Main -     Individual Score ID: 3
+03:09:22.050 [main] INFO  com.solvd.Main -     Time: 02:02:20
+03:09:22.051 [main] INFO  com.solvd.Main -     Points: 3
+03:09:22.051 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:09:22.052 [main] INFO  com.solvd.Main -     Individual Score ID: 4
+03:09:22.052 [main] INFO  com.solvd.Main -     Time: 02:02:02
+03:09:22.052 [main] INFO  com.solvd.Main -     Points: 5
+03:09:22.053 [main] INFO  com.solvd.Main -     Distance: 0.0
+03:09:22.053 [main] INFO  com.solvd.Main - Team Score ID: 1
+03:09:22.054 [main] INFO  com.solvd.Main - Team Points: 100
+03:09:22.054 [main] INFO  com.solvd.Main - Team Time: 00:15:30
+03:09:22.054 [main] INFO  com.solvd.Main - Team Score ID: 2
+03:09:22.055 [main] INFO  com.solvd.Main - Team Points: 75
+03:09:22.055 [main] INFO  com.solvd.Main - Team Time: 00:20:45
+03:09:22.055 [main] INFO  com.solvd.Main - ------

@@ -1,0 +1,51 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.secondBlock.persistence.ParticipantRepository">
+
+    <resultMap id="participantResultMap" type="com.solvd.secondBlock.model.Participant">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="surname" column="surname"/>
+        <result property="birthdate" column="birthdate"/>
+        <result property="gender" column="gender"/>
+        <result property="email" column="email"/>
+    </resultMap>
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO participants(country_id, sport_id, name, surname, birthdate, gender, email) VALUES (#{country.id},
+        #{sport.id}, #{name}, #{surname}, #{birthdate}, #{gender}, #{email})
+    </insert>
+
+    <update id="updateById">
+        UPDATE participants SET country_id=#{updated.country.id}, sport_id=#{updated.sport.id}, name=#{updated.name},
+        surname=#{updated.surname},
+        birthdate=#{updated.birthdate}, gender=#{updated.gender}, email=#{updated.email} WHERE id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM participants WHERE id=#{id}
+    </delete>
+
+    <select id="findById" resultMap="participantResultMap">
+        SELECT * FROM participants WHERE id=#{id}
+    </select>
+
+    <select id="findCaptainByTeamId" resultMap="participantResultMap">
+        SELECT p.id, p.country_id, p.sport_id, p.name, p.surname, p.birthdate, p.gender, p.email
+        FROM participants p
+        LEFT JOIN teams t ON p.id = t.captain_id
+        WHERE t.id=#{id}
+    </select>
+
+    <select id="findPlayersByTeamId" resultMap="participantResultMap">
+        SELECT p.id, p.country_id, p.sport_id, p.name, p.surname, p.birthdate, p.gender, p.email
+        FROM participants p
+        LEFT JOIN team_has_members thm ON p.id = thm.member_id
+        WHERE thm.team_id=#{id}
+    </select>
+
+    <select id="findAll" resultMap="participantResultMap">
+        SELECT * FROM participants
+    </select>
+
+</mapper>
